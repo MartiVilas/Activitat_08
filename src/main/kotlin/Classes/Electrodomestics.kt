@@ -1,68 +1,65 @@
-package org.example
+package org.example.Classes
 
-open class Electrodomestics(preuBase: Int, color: Int, colors: Array<Int>, consum: Char, pes: Int) {
+open class Electrodomestics {
+    var preuBaseElectrodomestics: Int = 0
+    var colorElectrodomestics: Int = 0
+    private var colorString: Array<String> = arrayOf("Blanc", "Verd", "Vermell", "Groc")
+    var consumElectrodomestics: Char = ' '
+    var pesElectrodomestics: Int = 0
 
+    constructor(preuBase: Int, color: Int, colorString: Array<String>, consum: Char, pes: Int) {
+        this.preuBaseElectrodomestics = preuBase
+        this.colorElectrodomestics = color
+        this.colorString = colorString
+        this.consumElectrodomestics = consum
+        this.pesElectrodomestics = pes
+    }
 
-        var preuBase: Int=0
-        var color: Int = 0
-        private var colorString: Array<String> = arrayOf("Blanc","Verd","Vermell","Groc")
-        var consum: Char = ' '
-        var pes: Int=0
+    fun setPreuBase(carrega: Int) {
+        preuBaseElectrodomestics = carrega
+    }
 
+    fun getPreuBase(): Int {
+        return this.preuBaseElectrodomestics
+    }
 
-        // Métodos para acceder y modificar atributos
+    fun setColor(nouColor: Int) {
+        colorElectrodomestics = nouColor
+    }
 
-        // PreuBase
-        fun setPreuBase(carrega: Int) {
-            preuBase = carrega
-        }
+    fun getColor(): Int {
+        return this.colorElectrodomestics
+    }
 
-        fun getPreuBase(): Int {
-            return this.preuBase
-        }
+    fun setColors(nousColors: Array<String>) {
+        colorString = nousColors
+    }
 
-        // Color
-        fun setColor(nouColor: Int) {
-            color = nouColor
-        }
+    fun getColors(): Array<String> {
+        return this.colorString
+    }
 
-        fun getColor(): Int {
-            return this.color
-        }
+    fun setConsum(nouConsum: Char) {
+        consumElectrodomestics = nouConsum
+    }
 
-        // Colors (Array)
-        fun setColors(nousColors: Array<String>) {
-            colorString = nousColors
-        }
+    fun getConsum(): Char {
+        return this.consumElectrodomestics
+    }
 
-        fun getColors(): Array<String> {
-            return this.colorString
-        }
+    fun setPes(nouPes: Int) {
+        pesElectrodomestics = nouPes
+    }
 
-        // Consum
-        fun setConsum(nouConsum: Char) {
-            consum = nouConsum
-        }
-
-        fun getConsum(): Char {
-            return this.consum
-        }
-
-        // Pes
-        fun setPes(nouPes: Int) {
-            pes = nouPes
-        }
-
-        fun getPes(): Int {
-            return this.pes
-        }
-
+    fun getPes(): Int {
+        return this.pesElectrodomestics
+    }
 
     fun preuFinal(): Int {
-        var preuFinal = preuBase
+        var preuFinal = preuBaseElectrodomestics
 
         // Incremento en función del consumo
-        when (consum) {
+        when (consumElectrodomestics) {
             'A' -> preuFinal += 35
             'B' -> preuFinal += 30
             'C' -> preuFinal += 25
@@ -74,15 +71,13 @@ open class Electrodomestics(preuBase: Int, color: Int, colors: Array<Int>, consu
 
         // Incremento en función del peso
         preuFinal += when {
-            pes in 6..20 -> 20
-            pes <= 50 -> 50
-            pes <= 80 -> 80
+            pesElectrodomestics in 6..20 -> 20
+            pesElectrodomestics <= 50 -> 50
+            pesElectrodomestics <= 80 -> 80
             else -> 100
         }
         return preuFinal
     }
-
-
-
-
 }
+
+
